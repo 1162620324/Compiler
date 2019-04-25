@@ -1,0 +1,14 @@
+//测试条件语句
+if(x < y and y < z) then
+    x = z;
+else
+    x = y + z;
+//测试循环语句
+int x;
+while(x < 10) do
+    x = x + 1;
+//错误用例
+char f;
+int[2][3] e;
+e[1][0] = f;
+

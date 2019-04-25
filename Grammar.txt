@@ -1,0 +1,52 @@
+Program->P
+P->Pa D P|S P|empty
+Pa -> empty
+    
+D->T id Da A ;|record id Db { P }
+Da -> empty
+Db -> empty
+A->= F Aa A|empty|, id Ab A 
+Aa->empty
+Ab->empty
+T->X Ta C
+Ta->empty
+X->int|real|char
+C->[ num ] C|empty
+
+S->L = E ;|if B then Sa S Sb else Sc S|while Sd B do Se S
+Sa->empty
+Sb->empty
+Sc->empty
+Sd->empty
+Se->empty
+E->G E'
+E'->+ G E'|- G E'|empty
+G->F G'
+G'->* F G'|empty
+F->( E )|id|num
+L->id L'
+L'->empty|[ E ] L'
+
+S->for ( id = E ; B ; id V ) { S }
+V->++|--
+S->switch ( id ) { N default : S }
+N->case num : S N|empty 
+
+B->H B'
+B'->or Bma H B' | empty
+Bma->empty
+H->I H'
+H'-> and Bmb I H'|empty
+Bmb->empty
+I->not B|( B )|E Relop E|true|false
+Relop-><|<=|==|!=|>|>=
+
+D->proc X id Dc ( M ) { P }
+Dc->empty
+M->X id Ma M'|empty   
+Ma->empty
+M'->, X id Mb M'|empty
+Mb->empty
+S->call id ( Elist ) ;|return E ;
+Elist->E Elist'
+Elist'->, E Elist'|empty
